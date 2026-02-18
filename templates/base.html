@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block titulo %}Flask + API REST{% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Flask + Consumo de API REST</h1>
+            <p>Proyecto UTNG</p>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block contenido %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Material de Desarrollo de Aplicaciones Orientadas a Servicios</p>
+        </div>
+    </footer>
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>

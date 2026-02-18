@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Consultar usuarios
+{% endblock %}
+
+{% block contenido %}
+<section class="intro-section">
+    <h2>Consumo de API REST con Python Flask</h2>
+    <p>
+        Esta aplicación consume la API pública
+        <strong>JSONPlaceholder</strong>
+        para obtener una lista de usuarios y mostrarlos
+        en formato tabla.
+    </p>
+    <p class="info-box">
+        <strong>API Endpoint</strong>
+        <code>https://jsonplaceholder.typicode.com/users</code>
+    </p>
+</section>
+
+<section class="action-section">
+    <button id="btnConsultar" class="btn-primary">
+        Consultar usuarios del API
+    </button>
+
+    <div id="loading" class="loading" style="display:none">
+        <div class="spinner"></div>
+        <p>Consultando API...</p>
+    </div>
+</section>
+
+<div id="mensajeArea" class="mensaje-area"></div>
+
+<section id="resultadosSection" style="display:none">
+    <h3>
+        Resultados (<span id="totalResultados">0</span> usuarios encontrados)
+    </h3>
+
+    <div class="table-container">
+        <table id="tablaUsuario">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Usuario</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Ciudad</th>
+                    <th>Empresa</th>
+                </tr>
+            </thead>
+            <tbody id="tablaBody"></tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const btnConsultar = document.getElementById('btnConsultar');
+const loading = document.getElementById('loading');
+const mensajeArea = document.getElementById('mensajeArea');
+const resultadosSection = document.getElementById('resultadosSection');
+const tablaBody = document.getElementById('tablaBody');
+const totalResultados = document.getElementById('totalResultados');
+
+// Consulta al backend Flask
+async function consultarUsuarios() {
+    mensajeArea.innerHTML = '';
+    mensajeArea.className = 'mensaje-area';
+    resultadosSection.style.display = 'none';
+
+    loading.style.display = 'block';
+    btnConsultar.disabled = true;
+
+    try {
+        const respuesta = await fetch('/consultar-usuarios');
+
+        if (!respuesta.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+
+        const datos = await respuesta.json();
+
+        if (datos.exito) {
+            mostrarUsuarios(datos.usuarios);
+            totalResultados.textContent = datos.total;
+            resultadosSection.style.display = 'block';
+            mostrarMensaje('Los usuarios se cargaron correctamente', 'exito');
+        } else {
+            mostrarMensaje('Error: ' + datos.error, 'error');
+        }
+
+    } catch (error) {
+        mostrarMensaje('Error al conectar con el servidor: ' + error.message, 'error');
+    } finally {
+        loading.style.display = 'none';
+        btnConsultar.disabled = false;
+    }
+}
+
+// Mostrar usuarios en la tabla
+function mostrarUsuarios(usuarios) {
+    tablaBody.innerHTML = '';
+
+    if (usuarios.length === 0) {
+        tablaBody.innerHTML = `
+            <tr>
+                <td colspan="7" style="text-align:center">
+                    No se encontraron usuarios
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    usuarios.forEach(usuario => {
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+            <td>${usuario.id}</td>
+            <td>${usuario.nombre}</td>
+            <td>${usuario.usuario}</td>
+            <td>${usuario.email}</td>
+            <td>${usuario.telefono}</td>
+            <td>${usuario.ciudad}</td>
+            <td>${usuario.empresa}</td>
+        `;
+        tablaBody.appendChild(fila);
+    });
+}
+
+// Mostrar mensajes
+function mostrarMensaje(mensaje, tipo) {
+    mensajeArea.innerHTML = `<p>${mensaje}</p>`;
+    mensajeArea.className = `mensaje-area mensaje-${tipo}`;
+}
+
+// Eventos
+btnConsultar.addEventListener('click', consultarUsuarios);
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && !btnConsultar.disabled) {
+        consultarUsuarios();
+    }
+});
+</script>
+{% endblock %}
