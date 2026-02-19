@@ -7,6 +7,7 @@ Aplicación web desarrollada con **Python + Flask** que integra múltiples APIs 
 ## 📋 Tabla de Contenidos
 
 - [Descripción](#descripción)
+- [Vista](#vista)
 - [Tecnologías](#tecnologías)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Requisitos Previos](#requisitos-previos)
@@ -14,7 +15,6 @@ Aplicación web desarrollada con **Python + Flask** que integra múltiples APIs 
 - [Configuración](#configuración)
 - [APIs Integradas](#apis-integradas)
 - [Uso](#uso)
-- [Capturas de Pantalla](#capturas-de-pantalla)
 
 ---
 
@@ -23,8 +23,38 @@ Aplicación web desarrollada con **Python + Flask** que integra múltiples APIs 
 **API01** es una aplicación web full-stack construida con Flask que sirve como hub de integración de múltiples APIs públicas. Permite a los usuarios consultar información en tiempo real sobre clima, películas, libros, música, divisas, noticias de Reddit, repositorios de GitHub, lugares y productos.
 
 ---
-## Vista
 
+## 🖼️ Vista
+
+### 💬 Chat
+![Chat](https://raw.githubusercontent.com/Gael-Carrillo/Creaci-n-de-APP-con-10-APIs-/main/screenshots/chat.png)
+
+### 🌤️ Clima
+![Clima](https://raw.githubusercontent.com/Gael-Carrillo/Creaci-n-de-APP-con-10-APIs-/main/screenshots/clima.png)
+
+### 💱 Divisas
+![Divisas](https://raw.githubusercontent.com/Gael-Carrillo/Creaci-n-de-APP-con-10-APIs-/main/screenshots/divisas.png)
+
+### 🐙 GitHub
+![GitHub](https://raw.githubusercontent.com/Gael-Carrillo/Creaci-n-de-APP-con-10-APIs-/main/screenshots/github.png)
+
+### 📚 Libros
+![Libros](https://raw.githubusercontent.com/Gael-Carrillo/Creaci-n-de-APP-con-10-APIs-/main/screenshots/libros.png)
+
+### 📍 Lugares
+![Lugares](https://raw.githubusercontent.com/Gael-Carrillo/Creaci-n-de-APP-con-10-APIs-/main/screenshots/lugares.png)
+
+### 🎬 Películas
+![Películas](https://raw.githubusercontent.com/Gael-Carrillo/Creaci-n-de-APP-con-10-APIs-/main/screenshots/peliculas.png)
+
+### 🛍️ Productos
+![Productos](https://raw.githubusercontent.com/Gael-Carrillo/Creaci-n-de-APP-con-10-APIs-/main/screenshots/productos.png)
+
+### 🔴 Reddit
+![Reddit](https://raw.githubusercontent.com/Gael-Carrillo/Creaci-n-de-APP-con-10-APIs-/main/screenshots/reddir.png)
+
+### 🎵 Spotify
+![Spotify](https://raw.githubusercontent.com/Gael-Carrillo/Creaci-n-de-APP-con-10-APIs-/main/screenshots/spotify.jpeg)
 
 ---
 
@@ -98,8 +128,8 @@ API01/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/API01.git
-cd API01
+git clone https://github.com/Gael-Carrillo/Creaci-n-de-APP-con-10-APIs-.git
+cd Creaci-n-de-APP-con-10-APIs-
 ```
 
 ### 2. Crear y activar el entorno virtual
@@ -204,12 +234,6 @@ La aplicación estará disponible en: `http://localhost:5000`
 | `/divisas` | divisas_app | Conversión de divisas |
 | `/productos` | productos_app | Gestión de productos |
 | `/chat` | chat_app | Chat interactivo |
-
----
-
-## 📷 Capturas de Pantalla
-
-Las capturas de pantalla están disponibles en la carpeta `/screenshots`.
 
 ---
 
