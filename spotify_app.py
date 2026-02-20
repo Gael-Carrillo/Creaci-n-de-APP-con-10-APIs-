@@ -4,7 +4,7 @@ import base64
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-app.secret_key = 'Marloneselmejordesarrollador1'  # Cambiar por una clave secreta
+app.secret_key = 'GaeloDev'
 
 # Spotify API Credentials
 CLIENT_ID = '0a4ffc8bb39d46ad8695bc9bc6fe97c6'
